@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kehilah Toráh Yeshua – Parashah Pinchas: Ofrendas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:      #a0720a;
+    --gold-lt:   #c49a2a;
+    --gold-dk:   #6b4c05;
+    --gold-bg:   #f9edd8;
+    --cream:     #fdf6e8;
+    --parch:     #f5e6c4;
+    --parch-dk:  #e8d09a;
+    --ink:       #2c1a06;
+    --brown:     #5c3a10;
+    --brown-lt:  #8a5c28;
+    --red:       #8b1a1a;
+    --border:    rgba(140,90,20,.22);
+    --card-bg:   #fffbf2;
+    --sec-bg:    #fff8ee;
+  }
+  /* ── PER-SECTION COLOR THEMES ── */
+  .theme-sunrise { --t-accent:#d4560a; --t-light:#fff3eb; --t-border:#f0a87a; --t-badge-bg:rgba(212,86,10,.1); --t-pill:#fde8d8; --t-pill-dk:#f5c4a0; --t-num:#b33a00; }
+  .theme-shabbat  { --t-accent:#2255a0; --t-light:#eef3fc; --t-border:#90b0e0; --t-badge-bg:rgba(34,85,160,.1); --t-pill:#dde8f8; --t-pill-dk:#b0c8ee; --t-num:#16408a; }
+  .theme-moon     { --t-accent:#5a2d82; --t-light:#f5eeff; --t-border:#c09de0; --t-badge-bg:rgba(90,45,130,.1); --t-pill:#ecddf8; --t-pill-dk:#d0b0ee; --t-num:#4a1a70; }
+  .theme-matzot   { --t-accent:#b8860b; --t-light:#fffbe8; --t-border:#e0c860; --t-badge-bg:rgba(184,134,11,.1); --t-pill:#fdf5cc; --t-pill-dk:#f0e090; --t-num:#8a6000; }
+  .theme-shavuot  { --t-accent:#1a7a40; --t-light:#eaf8ef; --t-border:#80cc9a; --t-badge-bg:rgba(26,122,64,.1); --t-pill:#cceedb; --t-pill-dk:#9ad8b4; --t-num:#0e5a2a; }
+  .theme-yomim    { --t-accent:#8b1a1a; --t-light:#fceaea; --t-border:#e09090; --t-badge-bg:rgba(139,26,26,.1); --t-pill:#f8d8d8; --t-pill-dk:#ecb0b0; --t-num:#6b0e0e; }
+  .theme-sucot    { --t-accent:#1a6a5a; --t-light:#e8faf6; --t-border:#70c8b0; --t-badge-bg:rgba(26,106,90,.1); --t-pill:#c8eee6; --t-pill-dk:#90d8c8; --t-num:#0e4a3c; }
+  .theme-herencia { --t-accent:#7a4a00; --t-light:#fff8ee; --t-border:#d4a860; --t-badge-bg:rgba(122,74,0,.1); --t-pill:#f8e8c0; --t-pill-dk:#e8cc88; --t-num:#5c3600; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: linear-gradient(160deg, #fdf0d8 0%, #f9e8c0 40%, #fdf6e8 100%);
+    background-attachment: fixed;
+    font-family: 'EB Garamond', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 46px 20px 34px;
+    background: linear-gradient(180deg, rgba(160,114,10,.10) 0%, transparent 100%);
+    border-bottom: 2px solid var(--t-pill-dk, var(--parch-dk));
+    position: relative;
+  }
+  .app-icon {
+    width: 76px; height: 76px;
+    border-radius: 18px;
+    display: block;
+    margin: 0 auto 18px;
+    box-shadow: 0 6px 24px rgba(140,90,20,.3), 0 2px 6px rgba(0,0,0,.14);
+  }
+  .org-tag {
+    font-family: 'Cinzel', serif;
+    font-size: .78rem; letter-spacing: .32em;
+    color: var(--brown-lt); text-transform: uppercase; margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.5rem, 5vw, 2.8rem); font-weight: 900;
+    color: var(--gold-dk); line-height: 1.15; margin-bottom: 8px;
+  }
+  .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(.85rem, 2.2vw, 1.05rem);
+    color: var(--brown); letter-spacing: .1em; margin-bottom: 6px;
+  }
+  .ref { font-style: italic; color: var(--brown-lt); font-size: .95rem; }
+  .divider-star {
+    display: block; font-size: 1.6rem; color: var(--gold-lt);
+    margin: 16px auto 0; animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:.45} 50%{opacity:1} }
+
+  /* WRAPPER */
+  .wrapper { max-width: 980px; margin: 0 auto; padding: 32px 20px 0; }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 26px;
+    border: 1px solid var(--t-border, var(--border));
+    border-top: 4px solid var(--t-accent, var(--gold-lt));
+    border-radius: 6px; overflow: hidden;
+    background: var(--t-light, var(--sec-bg));
+    box-shadow: 0 4px 18px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.06);
+    animation: fadeUp .5s ease both;
+  }
+  .section:nth-child(2){animation-delay:.04s}.section:nth-child(3){animation-delay:.08s}
+  .section:nth-child(4){animation-delay:.12s}.section:nth-child(5){animation-delay:.16s}
+  .section:nth-child(6){animation-delay:.20s}.section:nth-child(7){animation-delay:.24s}
+  .section:nth-child(8){animation-delay:.28s}
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+
+  .sec-header {
+    display: flex; align-items: center; gap: 14px; padding: 18px 22px;
+    background: linear-gradient(90deg, var(--t-pill, var(--gold-bg)) 0%, var(--t-light, var(--cream)) 100%);
+    border-bottom: 1px solid var(--t-border, var(--border));
+    cursor: pointer; user-select: none; transition: filter .2s;
+  }
+  .sec-header:hover { filter: brightness(.96); }
+  .sec-icon { font-size: 1.9rem; line-height: 1; flex-shrink: 0; }
+  .sec-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(.92rem, 2.7vw, 1.2rem); font-weight: 700;
+    color: var(--t-accent, var(--gold-dk)); letter-spacing: .04em; flex: 1;
+  }
+  .badge {
+    font-family: 'Cinzel', serif; font-size: .67rem; letter-spacing: .07em;
+    background: var(--t-badge-bg, rgba(160,114,10,.12));
+    border: 1px solid var(--t-border, rgba(160,114,10,.35));
+    color: var(--t-accent, var(--gold-dk)); padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .toggle-arrow { color: var(--t-accent, var(--gold)); font-size: .9rem; transition: transform .3s; flex-shrink: 0; }
+  .section.closed .toggle-arrow { transform: rotate(-90deg); }
+  .sec-body { padding: 22px 24px; }
+  .section.closed .sec-body { display: none; }
+
+  /* ANIMALS */
+  .animals { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .animal {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--t-pill, var(--parch)); border: 1px solid var(--t-pill-dk, var(--parch-dk));
+    border-radius: 40px; padding: 6px 16px 6px 10px;
+    font-size: 1rem; color: var(--brown);
+    transition: background .2s, box-shadow .2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  .animal:hover { filter: brightness(.94); box-shadow: 0 2px 8px rgba(0,0,0,.14); }
+  .animal .emoji { font-size: 1.4rem; line-height: 1; }
+  .animal .qty {
+    font-family: 'Cinzel', serif; font-size: .77rem; font-weight: 700;
+    color: var(--t-accent, var(--gold-dk)); background: var(--t-badge-bg, rgba(160,114,10,.14));
+    border-radius: 12px; padding: 1px 8px; margin-left: 4px;
+  }
+
+  /* OFFER GRID */
+  .offer-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(210px,1fr)); gap: 12px; margin-top: 14px; }
+  .offer-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-left: 3px solid var(--t-accent, var(--gold-lt)); border-radius: 4px;
+    padding: 13px 15px; box-shadow: 0 1px 5px rgba(0,0,0,.05);
+  }
+  .offer-card h4 {
+    font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .1em;
+    color: var(--t-accent, var(--gold-dk)); text-transform: uppercase; margin-bottom: 7px;
+    border-bottom: 1px solid var(--parch-dk); padding-bottom: 5px;
+  }
+  .offer-card p { font-size: .97rem; color: var(--brown); line-height: 1.65; }
+  .num { color: var(--t-num, var(--red)); font-weight: 600; }
+
+  /* DAY TABLE */
+  .day-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .94rem; }
+  .day-table th {
+    font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .09em;
+    color: var(--t-accent, var(--gold-dk)); background: var(--t-pill, var(--parch));
+    padding: 9px 12px; text-align: center; border-bottom: 2px solid var(--t-pill-dk, var(--parch-dk));
+  }
+  .day-table td { padding: 8px 12px; text-align: center; color: var(--brown); border-bottom: 1px solid rgba(140,90,20,.1); }
+  .day-table tr:last-child td { border-bottom: none; }
+  .day-table tr:hover td { background: rgba(160,114,10,.06); }
+  .day-name { font-family: 'Cinzel', serif; font-size: .77rem; color: var(--t-accent, var(--gold-dk)); text-align: left !important; font-weight: 600; }
+  .special { color: var(--red); font-weight: 700; font-size: 1.05rem; }
+  .shemini td { background: rgba(160,114,10,.07); }
+
+  /* STEPS */
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 11px 0; border-bottom: 1px solid rgba(140,90,20,.1);
+    font-size: 1.02rem; color: var(--brown); line-height: 1.55;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step); font-family: 'Cinzel', serif; font-size: .82rem; font-weight: 700;
+    color: #fff; background: linear-gradient(135deg, var(--t-accent, var(--gold-lt)), var(--t-num, var(--gold-dk)));
+    min-width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px; box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  }
+
+  /* INTRO NOTE */
+  .intro-note {
+    font-style: italic; color: var(--brown-lt); font-size: .97rem;
+    margin-bottom: 18px; padding: 10px 16px;
+    background: var(--t-badge-bg, rgba(160,114,10,.07)); border-left: 3px solid var(--t-accent, var(--gold-lt));
+    border-radius: 0 4px 4px 0; line-height: 1.65;
+  }
+
+  /* SUB TITLE */
+  .sub-title {
+    font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .1em;
+    color: var(--t-accent, var(--gold-dk)); margin: 18px 0 10px; text-transform: uppercase;
+    border-bottom: 1px dashed var(--parch-dk); padding-bottom: 5px;
+  }
+
+  /* TOTALS */
+  .totals {
+    background: linear-gradient(135deg, #fff8e8, var(--gold-bg));
+    border: 1px solid var(--t-border, rgba(160,114,10,.25)); border-radius: 6px;
+    padding: 16px 20px; margin-top: 20px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+  }
+  .totals h4 { font-family: 'Cinzel', serif; font-size: .74rem; letter-spacing: .12em; color: var(--t-accent, var(--gold-dk)); margin-bottom: 12px; text-transform: uppercase; }
+  .totals-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .total-item {
+    background: #fff; border: 1px solid rgba(160,114,10,.18);
+    border-radius: 4px; padding: 9px 15px; min-width: 130px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .total-item .label { font-size: .77rem; color: var(--brown-lt); margin-bottom: 2px; }
+  .total-item .value { font-family: 'Cinzel', serif; font-size: .98rem; color: var(--t-accent, var(--gold-dk)); font-weight: 700; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; margin-top: 60px; padding: 24px 20px 0;
+    font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .18em;
+    color: var(--brown-lt); border-top: 1px solid var(--parch-dk); opacity: .75;
+  }
+
+  @media(max-width:600px) {
+    .offer-grid { grid-template-columns: 1fr; }
+    .day-table th,.day-table td { padding: 6px 7px; font-size: .82rem; }
+    .sec-header { padding: 14px; gap: 10px; }
+    .sec-body { padding: 15px 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- Ícono SVG que replica el estilo del ícono de la app (sol/atardecer sobre agua) -->
+  <svg class="app-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76">
+    <defs>
+      <linearGradient id="gbg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#b83218"/>
+        <stop offset="50%" stop-color="#e06a18"/>
+        <stop offset="100%" stop-color="#f0b825"/>
+      </linearGradient>
+      <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#185ca0"/>
+        <stop offset="100%" stop-color="#2e8cc8"/>
+      </linearGradient>
+      <linearGradient id="gsun" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffe060"/>
+        <stop offset="100%" stop-color="#f5a820"/>
+      </linearGradient>
+      <clipPath id="rnd"><rect width="76" height="76" rx="17"/></clipPath>
+    </defs>
+    <rect width="76" height="76" rx="17" fill="url(#gbg)"/>
+    <rect x="0" y="18" width="76" height="58" fill="url(#gsky)" opacity=".6" clip-path="url(#rnd)"/>
+    <!-- Sun -->
+    <circle cx="38" cy="40" r="15" fill="url(#gsun)" opacity=".97"/>
+    <circle cx="38" cy="40" r="10" fill="#fff8c0" opacity=".6"/>
+    <!-- Horizon glow -->
+    <rect x="0" y="50" width="76" height="3" fill="#f5c838" opacity=".75"/>
+    <!-- Water ripples -->
+    <rect x="6"  y="55" width="64" height="2.5" rx="1.2" fill="#fff" opacity=".22"/>
+    <rect x="14" y="59" width="48" height="2"   rx="1"   fill="#fff" opacity=".14"/>
+    <rect x="22" y="63" width="32" height="1.5" rx=".75" fill="#fff" opacity=".10"/>
+    <!-- Bottom dark bar (app nav) -->
+    <rect x="0" y="66" width="76" height="10" fill="#0e1525" opacity=".55" clip-path="url(#rnd)"/>
+    <circle cx="19" cy="71" r="2.2" fill="#fff" opacity=".55"/>
+    <circle cx="29" cy="71" r="2.2" fill="#fff" opacity=".55"/>
+    <circle cx="38" cy="71" r="2.2" fill="#fff" opacity=".55"/>
+    <circle cx="48" cy="71" r="2.2" fill="#fff" opacity=".55"/>
+    <circle cx="57" cy="71" r="2.2" fill="#fff" opacity=".55"/>
+  </svg>
+
+  <div class="org-tag">Kehilah Toráh Yeshua</div>
+  <h1>Parashah Pinchas</h1>
+  <div class="subtitle">Números 25:10 – 30:1</div>
+  <div class="ref">Comentarios por Christian Gaviria Alvarez</div>
+  <span class="divider-star">✡</span>
+</header>
+
+<div class="wrapper">
+
+  <!-- 1. OFRENDA DIARIA -->
+  <div class="section theme-sunrise">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">🌅</span>
+      <h2>Ofrenda Diaria — <em>Olah Tamid</em></h2>
+      <span class="badge">Cada Día</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Dos corderos sin defecto de un año de edad, uno al amanecer y otro al atardecer, cada día del año sin excepción.</p>
+      <div class="animals">
+        <div class="animal"><span class="emoji">🐑</span> Cordero sin defecto (1 año) <span class="qty">×2 / día</span></div>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <h4>🌾 Ofrenda de Grano — por cordero</h4>
+          <p><span class="num">1/10 efá</span> de harina fina<br>+ <span class="num">1/4 hin</span> de aceite exprimido</p>
+        </div>
+        <div class="offer-card">
+          <h4>🍷 Ofrenda Líquida — por cordero</h4>
+          <p><span class="num">1/4 hin</span> de vino derramado<br>en la base del altar</p>
+        </div>
+        <div class="offer-card">
+          <h4>📏 Medidas de referencia</h4>
+          <p><span class="num">1 hin</span> ≈ 3.6 litros<br><span class="num">1 efá</span> ≈ 22 litros</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SHABBAT -->
+  <div class="section theme-shabbat">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">✡️</span>
+      <h2>Ofrenda de Shabbat</h2>
+      <span class="badge">Cada Shabbat</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Además de la ofrenda diaria (2 corderos), se añaden 2 corderos más cada Shabbat — total de <strong>4 corderos</strong> el día de reposo.</p>
+      <div class="animals">
+        <div class="animal"><span class="emoji">🐑</span> Corderos diarios <span class="qty">×2</span></div>
+        <div class="animal"><span class="emoji">🐑</span> Corderos adicionales <span class="qty">+2</span></div>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card"><h4>🌾 Total Harina</h4><p><span class="num">4/10 efá</span><br><small>(1/10 × 4 corderos)</small></p></div>
+        <div class="offer-card"><h4>🫒 Total Aceite</h4><p><span class="num">1 hin</span><br><small>(1/4 hin × 4 corderos)</small></p></div>
+        <div class="offer-card"><h4>🍷 Total Vino</h4><p><span class="num">1 hin</span><br><small>(1/4 hin × 4 corderos)</small></p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. ROSH JODESH -->
+  <div class="section theme-moon">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">🌙</span>
+      <h2>Rosh Jodesh — Inicio de Mes</h2>
+      <span class="badge">Cada Luna Nueva</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Al comienzo de cada mes lunar, se ofrecen sacrificios adicionales junto con la ofrenda diaria.</p>
+      <div class="animals">
+        <div class="animal"><span class="emoji">🐂</span> Toros <span class="qty">×2</span></div>
+        <div class="animal"><span class="emoji">🐏</span> Carnero <span class="qty">×1</span></div>
+        <div class="animal"><span class="emoji">🐑</span> Corderos machos (1 año) <span class="qty">×7</span></div>
+        <div class="animal"><span class="emoji">🐐</span> Macho cabrío — pecado <span class="qty">×1</span></div>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card"><h4>🌾 Harina por Toro</h4><p><span class="num">3/10 efá</span> + <span class="num">1/2 hin</span> de aceite</p></div>
+        <div class="offer-card"><h4>🌾 Harina por Carnero</h4><p><span class="num">2/10 efá</span> + <span class="num">1/3 hin</span> de aceite</p></div>
+        <div class="offer-card"><h4>🌾 Harina por Cordero</h4><p><span class="num">1/10 efá</span> + <span class="num">1/4 hin</span> de aceite</p></div>
+        <div class="offer-card"><h4>🍷 Vino por Toro</h4><p><span class="num">1/2 hin</span></p></div>
+        <div class="offer-card"><h4>🍷 Vino por Carnero</h4><p><span class="num">1/3 hin</span></p></div>
+        <div class="offer-card"><h4>🍷 Vino por Cordero</h4><p><span class="num">1/4 hin</span></p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. PANES SIN LEVADURA -->
+  <div class="section theme-matzot">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">🫓</span>
+      <h2>Panes sin Levadura — <em>Chag HaMatzot</em></h2>
+      <span class="badge">Nisán 15–21 · 7 días</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Durante los 7 días del banquete de los Panes sin Levadura (después de Pesaj), se repite el mismo sacrificio diario.</p>
+      <p class="sub-title">Por día — Nisán 15 al 21</p>
+      <div class="animals">
+        <div class="animal"><span class="emoji">🐂</span> Toros <span class="qty">×2</span></div>
+        <div class="animal"><span class="emoji">🐏</span> Carnero <span class="qty">×1</span></div>
+        <div class="animal"><span class="emoji">🐑</span> Corderos (1 año) <span class="qty">×7</span></div>
+        <div class="animal"><span class="emoji">🐐</span> Macho cabrío — pecado <span class="qty">×1</span></div>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <h4>🌾 Harina diaria total</h4>
+          <p>Toros: <span class="num">6/10 efá</span><br>Carnero: <span class="num">2/10 efá</span><br>Corderos: <span class="num">7/10 efá</span><br><strong>Total: 1½ efás / día</strong></p>
+        </div>
+        <div class="offer-card">
+          <h4>🫒 Aceite diario total</h4>
+          <p>Toros: <span class="num">1 hin</span><br>Carnero: <span class="num">1/3 hin</span><br>Corderos: <span class="num">1¾ hin</span><br><strong>Total: 3 1/12 hines / día</strong></p>
+        </div>
+        <div class="offer-card">
+          <h4>🍷 Vino diario total</h4>
+          <p>Igual que aceite:<br><strong>3 1/12 hines / día</strong></p>
+        </div>
+      </div>
+      <div class="totals">
+        <h4>⚖️ Total acumulado — 7 días</h4>
+        <div class="totals-grid">
+          <div class="total-item"><div class="label">🐂 Toros</div><div class="value">14</div></div>
+          <div class="total-item"><div class="label">🐏 Carneros</div><div class="value">7</div></div>
+          <div class="total-item"><div class="label">🐑 Corderos</div><div class="value">49</div></div>
+          <div class="total-item"><div class="label">🐐 Cabríos</div><div class="value">7</div></div>
+          <div class="total-item"><div class="label">🌾 Harina total</div><div class="value">10½ efás</div></div>
+          <div class="total-item"><div class="label">🍷 Vino total</div><div class="value">21 7/12 hines</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SHAVUOT -->
+  <div class="section theme-shavuot">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">🌾</span>
+      <h2>Shavuot — Fiesta de las Semanas</h2>
+      <span class="badge">6 de Siván</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Los sacrificios de Shavuot son exactamente iguales a los de Rosh Jodesh, con un elemento adicional especial: las primicias del trigo.</p>
+      <div class="animals">
+        <div class="animal"><span class="emoji">🐂</span> Toros <span class="qty">×2</span></div>
+        <div class="animal"><span class="emoji">🐏</span> Carnero <span class="qty">×1</span></div>
+        <div class="animal"><span class="emoji">🐑</span> Corderos (1 año) <span class="qty">×7</span></div>
+        <div class="animal"><span class="emoji">🐐</span> Macho cabrío — pecado <span class="qty">×1</span></div>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <h4>✨ Elemento exclusivo de Shavuot</h4>
+          <p>Primicias del trigo 🌿<br>Ofrenda de las primeras cosechas de la temporada.</p>
+        </div>
+        <div class="offer-card">
+          <h4>🌾 Harina / Aceite / Vino</h4>
+          <p>Mismas proporciones que <strong>Rosh Jodesh</strong> (ver sección anterior).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. YOM TERUAH & YOM KIPUR -->
+  <div class="section theme-yomim">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">🎺</span>
+      <h2>Yom Teruah &amp; Yom Kipur</h2>
+      <span class="badge">Tishri 1 &amp; 10</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Ambas fiestas comparten la misma base de sacrificios, con variaciones importantes respecto a Rosh Jodesh.</p>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <h4>🎺 Yom Teruah — 1 Tishri</h4>
+          <p>Igual a Rosh Jodesh, <em>excepto</em> que se sacrifica <span class="num">1 toro menos</span> → solo <strong>1 toro</strong> en lugar de 2.<br><br>
+          🐂×1 &nbsp;·&nbsp; 🐏×1 &nbsp;·&nbsp; 🐑×7 &nbsp;·&nbsp; 🐐×1</p>
+        </div>
+        <div class="offer-card">
+          <h4>⚖️ Yom Kipur — 10 Tishri</h4>
+          <p>Igual a Yom Teruah (<span class="num">1 toro</span>), más los <strong>2 machos cabríos</strong> de Levítico 16:<br><br>
+          🐐 Uno ofrendado al Señor por el pecado<br>
+          🐐 Uno enviado a <em>Azazel</em> fuera del campamento</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. SUCOT -->
+  <div class="section theme-sucot">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">🌿</span>
+      <h2>Sucot — Fiesta de los Tabernáculos</h2>
+      <span class="badge">Tishri 15–22 · 8 días</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">La fiesta más elaborada en sacrificios. Los toros disminuyen de 13 a 7 durante los primeros 7 días. El día 8 — Sheminí Atzéret — tiene sus propias cantidades reducidas.</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Día</th><th>🐂 Toros</th><th>🐏 Carneros</th><th>🐑 Corderos</th><th>🐐 Cabrío</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="day-name">Día 1 · 15 Tishri</td><td class="special">13</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr><td class="day-name">Día 2 · 16 Tishri</td><td class="special">12</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr><td class="day-name">Día 3 · 17 Tishri</td><td class="special">11</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr><td class="day-name">Día 4 · 18 Tishri</td><td class="special">10</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr><td class="day-name">Día 5 · 19 Tishri</td><td class="special">9</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr><td class="day-name">Día 6 · 20 Tishri</td><td class="special">8</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr><td class="day-name">Día 7 · 21 Tishri</td><td class="special">7</td><td>2</td><td>14</td><td>1</td></tr>
+          <tr class="shemini"><td class="day-name">Día 8 · <em>Sheminí Atzéret</em></td><td class="special">1</td><td>1</td><td>7</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <div class="totals">
+        <h4>⚖️ Totales acumulados — 8 días completos</h4>
+        <div class="totals-grid">
+          <div class="total-item"><div class="label">🐂 Toros</div><div class="value">71</div></div>
+          <div class="total-item"><div class="label">🐏 Carneros</div><div class="value">15</div></div>
+          <div class="total-item"><div class="label">🐑 Corderos</div><div class="value">105</div></div>
+          <div class="total-item"><div class="label">🐐 Cabríos</div><div class="value">8</div></div>
+          <div class="total-item"><div class="label">🌾 Harina (toros)</div><div class="value">21 3/10 efás</div></div>
+          <div class="total-item"><div class="label">🌾 Harina (carneros)</div><div class="value">3 efás</div></div>
+          <div class="total-item"><div class="label">🌾 Harina (corderos)</div><div class="value">10½ efás</div></div>
+          <div class="total-item" style="border-left:3px solid var(--red)"><div class="label">🌾 Harina TOTAL</div><div class="value" style="color:var(--red)">34 4/5 efás</div></div>
+          <div class="total-item"><div class="label">🍷 Vino (toros)</div><div class="value">35½ hines</div></div>
+          <div class="total-item"><div class="label">🍷 Vino (carneros)</div><div class="value">5 hines</div></div>
+          <div class="total-item"><div class="label">🍷 Vino (corderos)</div><div class="value">26¼ hines</div></div>
+          <div class="total-item" style="border-left:3px solid var(--red)"><div class="label">🍷 Vino TOTAL</div><div class="value" style="color:var(--red)">66¾ hines</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. HERENCIA -->
+  <div class="section theme-herencia">
+    <div class="sec-header" onclick="toggle(this)">
+      <span class="sec-icon">⚖️</span>
+      <h2>Leyes de Herencia — Hijas de Tzelofjad</h2>
+      <span class="badge">Ley Permanente</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="sec-body">
+      <p class="intro-note">Las hijas de Tzelofjad (tribu de Manasés) peticionaron a Moisés, y Dios estableció esta ley permanente de herencia en Israel.</p>
+      <ol class="steps">
+        <li>Si un hombre muere y tiene <strong>hijos varones</strong>, ellos heredan.</li>
+        <li>Si no tiene hijos, la herencia pasa a sus <strong>hijas</strong>.</li>
+        <li>Si no tiene hijos ni hijas, pasa a sus <strong>hermanos</strong>.</li>
+        <li>Si no tiene hermanos, pasa a los <strong>hermanos de su padre</strong> (tíos paternos).</li>
+        <li>Si no tiene tíos, pasa al <strong>pariente masculino más cercano</strong> de su clan.</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  KEHILAH TORÁH YESHUA &nbsp;·&nbsp; Comentarios Parashah 41 — Pinchas &nbsp;·&nbsp; Por Christian Gaviria Alvarez
+</footer>
+
+<script>
+  function toggle(header) {
+    header.parentElement.classList.toggle('closed');
+  }
+</script>
+</body>
+</html>
